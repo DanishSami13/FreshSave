@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | FreshSave</title>
+  <link rel="stylesheet" href="../css/adashboard.css" />
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">FreshSave</div>
+    <div class="admin-profile">
+        <div class="admin-avatar">Ad</div>
+        <span class="admin-greeting">Hi, Admin</span>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html" class="btn-outline" onclick="localStorage.removeItem('user')">Logout</a>
+    </div>
+  </nav>
+
+  <main class="admin-container">
+
+    <!-- STATS -->
+    <section class="stats-grid fade-up">
+      <div class="stat-card">
+        <span>👥 Total Users</span>
+        <strong id="totalUsers">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>🏪 Total Sellers</span>
+        <strong id="totalSellers">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>🍱 Food Listings</span>
+        <strong id="totalListings">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>♻ Meals Rescued</span>
+        <strong id="mealsRescued">0</strong>
+      </div>
+    </section>
+
+    <!-- USER MANAGEMENT -->
+    <section class="block fade-up">
+      <h2 class="section-title">User & Seller Management</h2>
+      <div class="section-divider"></div>
+
+      <div class="admin-table">
+        <div class="admin-row header">
+          <span>Name</span>
+          <span>Role</span>
+          <span>Status</span>
+          <span>Action</span>
+        </div>
+        <div id="user-table-body"></div>
+      </div>
+    </section>
+
+
+    <!-- FOOD LISTINGS -->
+    <section class="block fade-up">
+      <h2 class="section-title">Food Listings Monitor</h2>
+      <div class="section-divider"></div>
+
+      <div class="grid-2 food-monitor">
+        <!-- Food cards will be dynamically inserted here -->
+      </div>
+
+    </section>
+
+    <!-- RECENT ACTIVITY -->
+    <section class="block fade-up">
+      <h2 class="section-title">Recent Activity</h2>
+      <div class="section-divider"></div>
+
+      <div id="activity-list"></div>
+
+    </section>
+    
+
+    <section class="admin-analytics fade-up">
+      <h2 class="section-title">📊 Platform Analytics</h2>
+      <div class="section-divider"></div>
+
+      <div class="analytics-grid">
+        <div class="chart-card">
+          <canvas id="mealsChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <canvas id="usersChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <canvas id="requestsChart"></canvas>
+        </div>
+
+        <div class="impact-card">
+          <h3>Food Waste Reduced</h3>
+          <p class="impact-value">%</p>
+          <span>Compared to last month</span>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <footer>
+    © 2026 FreshSave | Admin Panel
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/admin.js"></script>
+
+  <div id="confirmModal">
+    <div class="confirm-card">
+
+      <h3 id="confirmTitle">Confirm Action</h3>
+      <p id="confirmText">Are you sure?</p>
+
+      <div class="confirm-buttons">
+        <button id="confirmCancel">Cancel</button>
+        <button id="confirmOk">Yes</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+</body>
+</html>

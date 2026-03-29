@@ -1,0 +1,441 @@
+:root {
+  --green: #1f7a3f;
+  --green-dark: #145a30;
+  --accent: #7cffb2;
+  --dark: #1c1c1c;
+  --gray: #666;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* PAGE BASE */
+body {
+  min-height: 100vh;
+  background: linear-gradient(120deg,#1b5e3c,#2e7d5b,#a5d6c3);
+  padding: 40px 20px; /* add this */
+}
+
+/* HERO / AUTH BACKGROUND CONTAINER */
+.hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* BACKGROUND IMAGE (FADE IN) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../assets/images/hero-food.jpg") center / cover no-repeat;
+
+  opacity: 0;
+  transform: scale(1.08);
+  mix-blend-mode: soft-light;
+
+  transition: opacity 1s ease, transform 1.5s ease;
+  z-index: 0;
+}
+
+/* ACTIVATE FADE */
+body.loaded .hero::after {
+  opacity: 0.14;
+  transform: scale(1);
+}
+
+.auth-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  padding: 42px 36px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+
+  animation: fadeUp 0.8s ease;
+}
+
+
+/* HEADER */
+.auth-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-header h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+  color: var(--dark);
+}
+
+.auth-header p {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+/* FORM */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(31,122,63,0.18);
+  outline: none;
+}
+
+.input-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #fff;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--green) 50%),
+    linear-gradient(135deg, var(--green) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) calc(50% - 3px),
+    calc(100% - 16px) calc(50% - 3px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.input-group select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(31,122,63,0.18);
+}
+
+
+/* BUTTON */
+.btn-primary {
+  background: linear-gradient(135deg, #1e7f4d, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(46,204,113,0.45);
+}
+
+.btn-primary.full {
+  width: 100%;
+}
+
+/* FOOTER */
+.auth-footer {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.error-msg {
+  display: none;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #d93025;
+  animation: shake 0.35s ease;
+}
+
+.input-group.error select {
+  border-color: #d93025;
+  box-shadow: 0 0 0 4px rgba(217,48,37,0.15);
+}
+
+.input-group.error .error-msg {
+  display: block;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+.input-group.success select {
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 4px rgba(46,204,113,0.2);
+}
+
+
+.auth-message {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-message.success {
+  background: #e6f8ef;
+  color: #1f7a3f;
+}
+
+.auth-message.error {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+
+/* ROLE SELECT WRAPPER */
+.input-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: #ffffff;
+  border: 2px solid rgba(31, 122, 63, 0.35);
+  border-radius: 12px;
+
+  padding: 14px 44px 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dark);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%231f7a3f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+}
+
+/* HOVER */
+.input-group select:hover {
+  border-color: var(--green);
+}
+
+/* FOCUS */
+.input-group select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(31, 122, 63, 0.18);
+}
+
+/* OPTION STYLE (limited but cleaner) */
+.input-group select option {
+  font-size: 14px;
+  padding: 10px;
+}
+
+
+/* STRONGER SELECT RESET */
+.auth-container .input-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #1c1c1c;
+
+  border-radius: 14px;
+  border: 2px solid rgba(31, 122, 63, 0.4);
+  background-color: #ffffff;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  /* CUSTOM ARROW */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%231f7a3f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+}
+
+/* HOVER */
+.auth-container .input-group select:hover {
+  border-color: var(--green);
+}
+
+/* FOCUS */
+.auth-container .input-group select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(31, 122, 63, 0.18);
+}
+
+/* OPTION TEXT (LIMITED) */
+.auth-container .input-group select option {
+  font-size: 14px;
+}
+
+
+/* SUCCESS / ERROR MESSAGE */
+.auth-message {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 0.4s ease forwards;
+}
+
+.auth-message.success {
+  background: rgba(46, 204, 113, 0.15);
+  color: #1f7a3f;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+}
+
+.auth-message.error {
+  background: rgba(231, 76, 60, 0.15);
+  color: #c0392b;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+
+
+/* background */
+.auth-bg{
+position:fixed;
+inset:0;
+background: linear-gradient(120deg,#1b5e3c,#2e7d5b,#a5d6c3);
+z-index:-1;
+}
+
+.auth-wrapper{
+position:fixed;
+top:0;
+right:0;
+height:100vh;
+width:100vw;
+
+display:flex;
+justify-content:flex-end;
+align-items:center;
+}
+
+/* GLASS CARD */
+.auth-glass{
+width:50vw;
+max-width:720px;
+min-width:420px;
+height:100vh;
+padding:60px;
+background: rgba(255,255,255,0.18);
+backdrop-filter: blur(20px);
+border-left:1px solid rgba(255,255,255,0.35);
+display:flex;
+flex-direction:column;
+justify-content:center;
+animation: fadeUp .8s ease;
+}
+
+.input-group input,
+.input-group select{
+background: rgba(255,255,255,0.75);
+border:1px solid rgba(255,255,255,0.6);
+}
+
+.auth-form{
+  gap:20px;
+}
+
+.auth-bg{
+position:fixed;
+inset:0;
+
+background:
+linear-gradient(
+rgba(31,122,63,0.85),
+rgba(124,255,178,0.45)
+),
+url("../assets/images/hero-food.jpg");
+
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+animation: fadeUp 0.8s ease;
+z-index:-1;
+}
+
+.auth-bg::after{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 40%);
+}
+
+.auth-header p{
+color: black;
+opacity: 0.9;
+}
+
+

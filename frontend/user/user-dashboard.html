@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard | FreshSave</title>
+
+  <!-- FIXED PATH -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="../css/udashboard.css" />
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="dashboard-nav">
+    <div class="logo">FreshSave</div>
+
+    <div class="nav-user">
+      <div class="user-badge">U</div>
+      <span class="user-name">Hi, User</span>
+    </div>
+
+    <div class="nav-right">
+      <a href="../index.html" class="btn btn-outline">Logout</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="dashboard">
+
+    <!-- WELCOME -->
+    <section class="welcome-hero fade-up">
+        <div class="welcome-content">
+          <h1>Welcome Back 👋</h1>
+          <p>Discover fresh food near you and make a difference today.</p>
+        </div>
+
+      <div class="welcome-badge">
+        🌱 FreshSave Active
+      </div>
+    </section>
+
+    <section class="block fade-up">
+
+      <div class="section-header">
+        <h2 class="section-title fade-up">Food Map Near You</h2>
+        <div class="section-underline"></div>
+      </div>
+
+      <div class="map-card fade-up" id="foodMap"></div>
+
+      <div class="radius-filter">
+        <span class="filter-label">📍 Show food within</span>
+
+        <select id="radiusFilter">
+          <option value="100">All</option>
+          <option value="1">1 km</option>
+          <option value="3">3 km</option>
+          <option value="5">5 km</option>
+          <option value="10">10 km</option>
+        </select>
+      </div>
+
+    </section>
+
+    <div class="section-header fade-up">
+      <h2>
+        Available Food Near You 
+        <span class="food-count" id="foodCount"></span>
+      </h2>
+      <div class="section-underline"></div>
+    </div>
+    <div id="foodList" class="card-grid fade-up"></div>
+
+  <section class="requests-section fade-up">
+    <div class="section-header fade-up">
+      <h2>My Requests</h2>
+      <div class="section-underline"></div>
+    </div>
+    <div id="myRequests" class="card-grid fade-up"></div>
+  </section>
+
+  </main>
+  <script src="../js/user-dashboard.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <div id="toast"></div>
+</body>
+</html>

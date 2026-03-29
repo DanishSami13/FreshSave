@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard | FreshSave</title>
+  <link rel="stylesheet" href="../css/sdashboard.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <div class="page">
+
+  <nav class="navbar">
+    <div class="logo">FreshSave</div>
+    <div class="seller-profile">
+        <div class="seller-avatar">S</div>
+        <span class="seller-greeting">Hi, Seller</span>
+    </div>
+    <div class="nav-actions">
+      <a href="../index.html" onclick="logout()" class="btn-outline">Logout</a>
+    </div>
+  </nav>
+
+  <main class="dashboard">
+
+    <section class="seller-stats fade-up">
+      <div class="stat-card">
+        <h3>🧺 Total Listings</h3>
+        <p id="stat-total">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>📦 Active Listings</h3>
+        <p id="stat-active">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>✅ Picked Today</h3>
+        <p id="stat-picked">0</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>⏳ Pending Requests</h3>
+        <p id="stat-pending">0</p>
+      </div>
+    </section>
+
+    <!-- ADD FOOD -->
+    <section class="card fade-up">
+      <h2>Add Surplus Food</h2>
+      <form id="add-food-form">
+
+        <!-- TOP INPUTS -->
+        <div class="form-grid">
+          <input type="text" id="food-name" placeholder="🍽 Food Name" required />
+          <input type="number" id="food-quantity" placeholder="📦 Quantity" required min="1" />
+          <input type="number" id="food-expiry" placeholder="⏳ Expiry (hours)" required min="1" />
+        </div>
+
+        <!-- LOCATION SECTION -->
+        <div class="location-box">
+
+          <label class="location-label">📍 Pickup Location</label>
+
+          <div class="location-input-row">
+            <input
+              type="text"
+              id="food-location"
+              placeholder="Enter address or landmark"
+              required
+            />
+
+            <button type="button" class="btn-location" onclick="useMyLocation()">
+              📍 Use My Location
+            </button>
+          </div>
+
+          <div id="map"></div>
+
+          <div class="selected-location">
+            Selected: <span id="coords">Click on map</span>
+          </div>
+
+        </div>
+
+        <!-- HIDDEN -->
+        <input type="hidden" id="lat">
+        <input type="hidden" id="lng">
+
+        <!-- BUTTON -->
+        <button class="btn-primary add-btn">Add Food</button>
+
+      </form>
+    </section>
+
+    <!-- LISTED FOOD -->
+    <section class="card fade-up">
+      <h2>My Listings</h2>
+      <div id="my-listings-container"></div>
+    </section>
+
+    <section class="block fade-up">
+      <h2 class="section-title">Incoming Requests</h2>
+       <div class="section-divider"></div>
+       <div class="requests-grid fade-up" id="requests-container"></div>
+    </section>
+  </main>
+  
+  <footer>
+    © 2026 FreshSave | Seller Panel
+  </footer>
+
+  </div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="../js/seller-dashboard.js"></script>
+<div id="toast" class="toast"></div>
+</body>
+</html>

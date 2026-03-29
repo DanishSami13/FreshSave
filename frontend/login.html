@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | FreshSave</title>
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="icon" href="data:,">
+</head>
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="auth-bg"></div>
+
+  <!-- LOGIN CARD -->
+  <div class="auth-wrapper">
+
+    <div class="auth-glass">
+
+      <div class="auth-header">
+        <h1>Welcome Back 👋</h1>
+        <p>Login to continue saving food</p>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" required />
+        </div>
+        
+        <button type="submit" class="btn-primary full">
+          Login
+        </button>
+
+        <div id="authMessage" class="auth-message" style="opacity: 0;"></div>
+
+      </form>
+
+      <div class="auth-footer">
+        <p>
+          Don’t have an account?
+          <a href="register.html">Create one</a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="js/login.js"></script>
+</body>
+</html>
