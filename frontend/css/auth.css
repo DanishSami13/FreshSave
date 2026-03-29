@@ -439,3 +439,51 @@ opacity: 0.9;
 }
 
 
+/* ============================= */
+/* Mobile Fix - Login/Register   */
+/* ============================= */
+@media (max-width: 768px) {
+
+  .auth-container,
+  .login-container,
+  .register-container {
+    padding: 20px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .auth-card,
+  .login-card,
+  .register-card {
+    width: 100% !important;
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .auth-title,
+  .login-title,
+  .register-title {
+    font-size: 26px !important;
+    text-align: center;
+  }
+
+  .auth-subtitle {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  input,
+  select,
+  button {
+    width: 100% !important;
+  }
+
+  .form-group {
+    margin-bottom: 16px !important;
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
