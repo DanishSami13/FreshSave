@@ -4,7 +4,7 @@
 
 const CONFIG = {
   // 🔗 Backend base URL
-  API_BASE_URL: "http://127.0.0.1:5000",
+  API_BASE_URL: "https://freshsave.onrender.com",
 
   // 🔐 Role Header Key (used by role_guard)
   ROLE_HEADER: "Role",
