@@ -531,8 +531,9 @@ opacity: 0.9;
     display: flex !important;
     justify-content: center;
     align-items: center;   /* ✅ center vertically */
-    min-height: 100vh;
-    padding: 20px 10px;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 0;
   }
 
   .auth-wrapper {
@@ -551,6 +552,7 @@ opacity: 0.9;
     min-width: 0 !important;
     padding: 25px 20px !important;
     border-radius: 16px;
+    overflow: hidden;
   }
 
 }
