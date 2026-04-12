@@ -164,10 +164,10 @@ function loadAnalytics() {
     requestsChart = new Chart(document.getElementById("requestsChart"), {
       type: "pie",
       data: {
-        labels: ["Approved", "Pending", "Rejected"],
+        labels: ["Approved", "Rejected"],
         datasets: [{
-          data: [data.approved, data.pending, data.rejected],
-          backgroundColor: ["#2ecc71", "#f1c40f", "#e74c3c"]
+          data: [data.approved, data.rejected],
+          backgroundColor: ["#2ecc71", "#e74c3c"]
         }]
       },
       options: { responsive: true, maintainAspectRatio: false }

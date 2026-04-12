@@ -76,6 +76,7 @@ def get_activity():
 @admin_bp.route("/analytics", methods=["GET"])
 @require_role("admin")
 def analytics():
+
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -87,32 +88,15 @@ def analytics():
     cursor.execute("SELECT COUNT(*) FROM users WHERE role='seller'")
     sellers = cursor.fetchone()[0]
 
- # Approved
-    cursor.execute("""
-    SELECT COUNT(*)
-    FROM food_requests
-    WHERE status='approved'
-    """)
+    # ✅ Approved (ALL TIME)
+    cursor.execute("SELECT COUNT(*) FROM food_requests WHERE status='approved'")
     approved = cursor.fetchone()[0]
 
-    # Pending
-    cursor.execute("""
-    SELECT COUNT(*)
-    FROM food_requests
-    WHERE status='requested'
-    """)
-    pending = cursor.fetchone()[0]
-
-    # Rejected
-    cursor.execute("""
-    SELECT COUNT(*)
-    FROM food_requests
-    WHERE status='rejected'
-    """)
+    # ✅ Rejected (ALL TIME)
+    cursor.execute("SELECT COUNT(*) FROM food_requests WHERE status='rejected'")
     rejected = cursor.fetchone()[0]
 
-
-    # Meals rescued (sum of quantity)
+    # Meals rescued
     cursor.execute("""
         SELECT SUM(quantity_requested)
         FROM food_requests
@@ -126,7 +110,6 @@ def analytics():
         "users": users,
         "sellers": sellers,
         "approved": approved,
-        "pending": pending,
         "rejected": rejected,
         "mealsRescued": meals_rescued
     })
